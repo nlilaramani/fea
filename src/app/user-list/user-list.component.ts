@@ -18,6 +18,8 @@ export class UserListComponent{
   constructor(private service:UserService){
     this.users=this.service.getAllUsers();
     console.log(this.users);
+    this.users=this.service.getAllUsersHttp();
+    console.log(this.users);
   }
   itemClick(user:User):void{
     this.selectedUser=user;
