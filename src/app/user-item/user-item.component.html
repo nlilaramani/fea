@@ -1,0 +1,14 @@
+    <div class="ui column" >{{user?.id}}</div>
+    <div class="ui column">{{user?.name}}</div>
+    <div class="ui column" [style.color]="'violet'">{{user?.email}}</div>
+    <div class="ui column" [ngStyle]="{color:'red'}"
+        [ngClass]="{centered:getSize()}">
+    @switch (user?.education) {
+        @case ("B") {Bachelor's Degree}
+        @case ("HD") {Highschool Diploma}
+        @case ("M") {Graduate Degree}
+        @case ("P") {PhD}
+        @default {Unknown}
+    }
+    </div>
+    

@@ -1,0 +1,41 @@
+<div class="ui header large blue">User Add/Edit Form</div>
+<form #f="ngForm" (submit)="onSubmit(f)" 
+    class="ui form">
+    @if(user.id>0){
+    <div class="disabled field">
+        <label for="id">Id</label>
+        <input type="text" id="id" name="id" [(ngModel)]="user.id" 
+        class="ui disabled">
+    </div>
+    }
+
+    <div class="required field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" 
+        [(ngModel)]="user.name" required minlength="3"
+        #name="ngModel">
+    </div>
+    @if (name.invalid && (name.dirty || name.touched)){
+        <div class="ui negative message">
+            <p>Name is either empty or invalid. Pl fix</p>
+        </div>
+    }
+
+    <div class="required field">
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="email"  
+            [(ngModel)]="user.email" required minlength="3">
+    </div>
+    <div class="required field">
+        <label for="education">Education</label>
+        <input type="text" id="education" name="education" 
+            [(ngModel)]="user.education" required>
+    </div>
+    <div class="button" >
+        <button class="ui button default" [disabled]="!f.valid">
+            @if(user.id==0){Add User}
+            @else {Edit User}
+        </button>
+    </div>
+</form>
+

@@ -1,0 +1,17 @@
+<div class="ui huge header blue">User List</div>
+<div class="ui four column grid">
+     <div class="ui row large header">
+          <div class="column">User Id</div>
+          <div class="column">Name</div>
+          <div class="column">Email</div>
+          <div class="column">Education</div>
+     </div>
+@for(user of users;track user.id){
+     @if (user.active) {
+          <app-user-item [user]=user  
+               (click)='itemClick(user)'></app-user-item>
+     }
+}
+</div>
+<div class="ui divider"></div>
+<app-user-form [user]="selectedUser"></app-user-form>
