@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.ui.row.inverted:hover{
+    background-color: green;
+    cursor:pointer;
+}
+.ui.row.header:hover{
+    background-color: green;
+    cursor:pointer;
+}
+.border-1{
+    border: 1px solid black;
+}
