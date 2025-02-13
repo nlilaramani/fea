@@ -1,0 +1,53 @@
+<div class="ui large header blue">Patient Details</div>
+<div class="ui section">
+    
+    <div class="ui field " style="display: inline-block;">
+        <label for="search">Search Id:</label>
+        <input id="search" name="search" [(ngModel)]="searchId">
+    </div>
+    <button class="ui button green" (click)="getPatientDetails();">Search</button>
+    <button class="ui button blue" (click)="clearForm();">Add Patient</button>
+</div>
+<hr>
+<form #f="ngForm" name="f">
+    <div class="ui form">
+        <div class="ui field disabled">
+            <label for="id">Patient Id</label>
+            <input id="id" name="id" [(ngModel)]="patient.id">
+        </div>
+        <div class="ui field required">
+            <label for="fname">First Name</label>
+            <input id="fname" name="fname" #fname [(ngModel)]="patient.fname" required minlength="3">
+        </div>
+        @if(fname.value.length<3){
+        <div class="ui warning">
+            First name is required.
+        </div>
+        }
+        <div class="ui field required">
+            <label for="lname">Last Name</label>
+            <input id="lname" name="lname" [(ngModel)]="patient.lname" required minlength="3">
+        </div>
+        <div class="ui field required">
+            <label for="dob">Date of Birth</label>
+            <input id="dob" name="dob" [(ngModel)]="patient.dob" required minlength="3">
+        </div>
+        <div class="ui field required">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" [(ngModel)]="patient.email" required minlength="3">
+        </div>
+        <div class="ui field">
+            <label for="reg">Registered</label>
+            <input type="checkbox" id="reg" name="reg" [(ngModel)]="patient.registered">
+        </div>
+        @if(patient.id==0){
+            <button class="ui button blue" (click)="addPatient();">Add New Patient</button>
+        }
+        @else {
+            <button class="ui button blue" (click)="editPatient();">Edit Patient</button>
+            <button class="ui button blue" (click)="deletePatient();">Delete Patient</button>
+        }
+
+    </div>
+    
+</form>

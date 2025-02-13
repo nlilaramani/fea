@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { User } from "../models/user.model";
 import { HttpClient } from "@angular/common/http";
+import { Patient } from "../models/patient.model";
 @Injectable()
 export class UserService{
     constructor(private http:HttpClient){
@@ -28,7 +29,32 @@ export class UserService{
             });
         })
         console.log(users);
+        this.getAllPatientsHttp();
+        //console.log(patients);
         return users;
+    }
+
+    getAllPatientsHttp():Object[]{
+        let patients:Object[]=[];
+        this.http.get('http://localhost:8090/patients').subscribe(data=>{
+            console.log(data);
+            var data1=<Array<any>>(data);
+            data1.forEach(e=> {
+                console.log(e["id"]);
+                patients.push({"id":e["id"],"fname":e["fname"],"email":e["email"],"education":"","active":true});    
+            });
+        })
+        console.log(patients);
+        return patients;
+    }
+
+    addPatient(p:Patient):Object{
+        let result:Object={};
+        this.http.post("http://localhost:8090/patients",p).subscribe(data=>{
+            console.log(data);
+            result=data;
+        });
+        return result;
     }
     
 }

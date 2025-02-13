@@ -4,11 +4,12 @@ import { User } from '../models/user.model';
 import { UserItemComponent } from '../user-item/user-item.component';
 import { UserService } from '../services/user.service';
 import { UserFormComponent } from "../user-form/user-form.component";
+import { PatientFormComponent } from "../patient-form/patient-form.component";
 
 @Component({
   providers:[UserService],
   selector: 'app-user-list',
-  imports: [UserItemComponent, UserFormComponent],
+  imports: [UserItemComponent],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
